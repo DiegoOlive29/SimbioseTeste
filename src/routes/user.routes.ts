@@ -1,6 +1,11 @@
 import { Router } from "express";
 
-const userRoutes = Router()
+const userRoutes = Router();
 
+userRoutes.post("");
+userRoutes.get("");
+userRoutes.get("");
+userRoutes.patch("");
+userRoutes.delete("");
 
 export default userRoutes;
