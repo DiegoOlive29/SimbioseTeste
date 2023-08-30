@@ -1,6 +1,6 @@
 ### Teste técnico solictado pela Simbiose:
 
-  Teste realizado para a Greenv, onde foi solicitado a criação de CRUD para veículos, usuários e companhias com algumas relações entre eles.
+  Teste realizado para a Simbiose, onde foi solicitado a criação de CRUD para pessoas.
 
 ## Built With
 
