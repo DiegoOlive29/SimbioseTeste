@@ -41,7 +41,11 @@ const updatePessoaController = async (req: Request, res: Response) => {
 };
 
 const deletePessoaController = async (req: Request, res: Response) => {
-  return "";
+  const id = req.params.id;
+
+  await pessoaDeleteService(id);
+
+  return res.status(204).json();
 };
 
 export {

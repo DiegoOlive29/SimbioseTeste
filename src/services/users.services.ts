@@ -22,15 +22,15 @@ export const createPessoa = async ({
     throw new AppError("email or cpf already registered", 401);
   }
 
-  const newUser = userRespository.create({
+  const newPessoa = userRespository.create({
     nome,
     email,
     data,
   });
 
-  await userRespository.save(newUser);
+  await userRespository.save(newPessoa);
 
-  return newUser;
+  return newPessoa;
 };
 
 export const listPessoaAll = async (): Promise<User[]> => {
@@ -43,13 +43,13 @@ export const listPessoaAll = async (): Promise<User[]> => {
 export const listPessoaId = async (id: string): Promise<User> => {
   const userRepository = AppDataSource.getRepository(User);
 
-  const pessoas = await userRepository.findOneBy({ id });
+  const pessoa = await userRepository.findOneBy({ id });
 
-  if (!pessoas) {
+  if (!pessoa) {
     throw new AppError("User not found", 404);
   }
 
-  return pessoas;
+  return pessoa;
 };
 
 export const updatePessoa = async (
@@ -77,6 +77,16 @@ export const updatePessoa = async (
   return newPessoa;
 };
 
-export const pessoaDeleteService = async () => {
-  return "";
+export const pessoaDeleteService = async (id: string) => {
+  const userRepository = AppDataSource.getRepository(User);
+
+  const pessoa = await userRepository.findOneBy({ id });
+
+  if (!pessoa) {
+    throw new AppError("User not found", 404);
+  }
+
+  await userRepository.delete({ id: pessoa.id });
+
+  return true;
 };
