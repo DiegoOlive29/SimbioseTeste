@@ -43,7 +43,7 @@ export const listPessoaAll = async (): Promise<User[]> => {
 export const listPessoaId = async (id: string): Promise<User> => {
   const userRepository = AppDataSource.getRepository(User);
 
-  const pessoas = await userRepository.findOneBy({id});
+  const pessoas = await userRepository.findOneBy({ id });
 
   if (!pessoas) {
     throw new AppError("User not found", 404);
@@ -52,8 +52,29 @@ export const listPessoaId = async (id: string): Promise<User> => {
   return pessoas;
 };
 
-export const updatePessoa = async () => {
-  return "";
+export const updatePessoa = async (
+  id: string,
+  { email, nome, data }: IPessoaUpdateRequest
+) => {
+  const userRepository = AppDataSource.getRepository(User);
+
+  const pessoas = await userRepository.findOneBy({ id });
+
+  if (!pessoas) {
+    throw new AppError("User not found", 404);
+  }
+
+  await userRepository.update(id, {
+    email: email ? email : pessoas.email,
+    nome: nome ? nome : pessoas.nome,
+    data: data ? data : pessoas.data,
+  });
+
+  const newPessoa = await userRepository.findOneBy({
+    id,
+  });
+
+  return newPessoa;
 };
 
 export const pessoaDeleteService = async () => {

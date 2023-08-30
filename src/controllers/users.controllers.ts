@@ -33,7 +33,11 @@ const listPessoaIdController = async (req: Request, res: Response) => {
 };
 
 const updatePessoaController = async (req: Request, res: Response) => {
-  return "";
+  const id = req.params.id;
+  const { email, nome, data }: IPessoaUpdateRequest = req.body;
+  const updatedDadosPessoa = await updatePessoa(id, { email, nome, data });
+
+  return res.json(updatedDadosPessoa);
 };
 
 const deletePessoaController = async (req: Request, res: Response) => {
