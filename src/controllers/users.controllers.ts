@@ -6,7 +6,7 @@ import {
 } from "../interfaces/users.interfaces";
 import {
   createPessoa,
-  listPessoa,
+  listPessoaId,
   listPessoaAll,
   pessoaDeleteService,
   updatePessoa,
@@ -25,7 +25,11 @@ const listPessoaAllController = async (req: Request, res: Response) => {
   return res.json(pessoa);
 };
 const listPessoaIdController = async (req: Request, res: Response) => {
-  return "";
+  const id = req.params.id;
+
+  const pessoa = await listPessoaId(id);
+
+  return res.json(pessoa);
 };
 
 const updatePessoaController = async (req: Request, res: Response) => {

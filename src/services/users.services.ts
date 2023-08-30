@@ -34,14 +34,22 @@ export const createPessoa = async ({
 };
 
 export const listPessoaAll = async (): Promise<User[]> => {
-  const userRespository = AppDataSource.getRepository(User);
+  const userRepository = AppDataSource.getRepository(User);
 
-  const pessoas = await userRespository.find();
+  const pessoas = await userRepository.find();
 
   return pessoas;
 };
-export const listPessoa = async () => {
-  return "";
+export const listPessoaId = async (id: string): Promise<User> => {
+  const userRepository = AppDataSource.getRepository(User);
+
+  const pessoas = await userRepository.findOneBy({id});
+
+  if (!pessoas) {
+    throw new AppError("User not found", 404);
+  }
+
+  return pessoas;
 };
 
 export const updatePessoa = async () => {
