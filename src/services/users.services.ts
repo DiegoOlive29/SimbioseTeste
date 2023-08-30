@@ -7,21 +7,43 @@ import {
 } from "../interfaces/users.interfaces";
 import { AppError } from "../errors/AppError";
 
-export const createUser = async ({}) => {
+export const createPessoa = async ({
+  nome,
+  email,
+  data,
+}: IPessoaRequest): Promise<User> => {
+  const userRespository = AppDataSource.getRepository(User);
+
+  const userEmailAlreadyExists = await userRespository.findOne({
+    where: { email },
+  });
+
+  if (userEmailAlreadyExists) {
+    throw new AppError("email or cpf already registered", 401);
+  }
+  
+  const newUser = userRespository.create({
+    nome,
+    email,
+    data,
+  });
+
+  await userRespository.save(newUser);
+
+  return newUser;
+};
+
+export const listPessoaActive = async () => {
+  return "";
+};
+export const listPessoa = async () => {
   return "";
 };
 
-export const listUserActive = async () => {
-  return "";
-};
-export const listUser = async () => {
+export const updatePessoa = async () => {
   return "";
 };
 
-export const updateUser = async () => {
-  return "";
-};
-
-export const userDeleteSelfService = async () => {
+export const pessoaDeleteService = async () => {
   return "";
 };

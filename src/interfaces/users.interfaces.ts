@@ -1,5 +1,5 @@
 interface IPessoaRequest {
-  name: string;
+  nome: string;
   email: string;
   data: string;
 }
@@ -9,7 +9,7 @@ interface IUserResponse extends IPessoaRequest {
 }
 
 interface IPessoaUpdateRequest {
-  name?: string;
+  nome?: string;
   email?: string;
   data?: string;
 }

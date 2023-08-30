@@ -4,9 +4,20 @@ import {
   IPessoaUpdateRequest,
   IUserResponse,
 } from "../interfaces/users.interfaces";
+import {
+  createPessoa,
+  listPessoa,
+  listPessoaActive,
+  pessoaDeleteService,
+  updatePessoa,
+} from "../services/users.services";
 
 const createPessoaController = async (req: Request, res: Response) => {
-  return "";
+  const { data, email, nome }: IPessoaRequest = req.body;
+
+  const pessoa = await createPessoa({ data, email, nome });
+
+  return res.status(201).json(pessoa);
 };
 const listPessoaAllController = async (req: Request, res: Response) => {
   return "";
