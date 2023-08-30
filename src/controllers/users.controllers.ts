@@ -7,7 +7,7 @@ import {
 import {
   createPessoa,
   listPessoa,
-  listPessoaActive,
+  listPessoaAll,
   pessoaDeleteService,
   updatePessoa,
 } from "../services/users.services";
@@ -20,7 +20,9 @@ const createPessoaController = async (req: Request, res: Response) => {
   return res.status(201).json(pessoa);
 };
 const listPessoaAllController = async (req: Request, res: Response) => {
-  return "";
+  const pessoa = await listPessoaAll();
+
+  return res.json(pessoa);
 };
 const listPessoaIdController = async (req: Request, res: Response) => {
   return "";

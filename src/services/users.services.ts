@@ -21,7 +21,7 @@ export const createPessoa = async ({
   if (userEmailAlreadyExists) {
     throw new AppError("email or cpf already registered", 401);
   }
-  
+
   const newUser = userRespository.create({
     nome,
     email,
@@ -33,8 +33,12 @@ export const createPessoa = async ({
   return newUser;
 };
 
-export const listPessoaActive = async () => {
-  return "";
+export const listPessoaAll = async (): Promise<User[]> => {
+  const userRespository = AppDataSource.getRepository(User);
+
+  const pessoas = await userRespository.find();
+
+  return pessoas;
 };
 export const listPessoa = async () => {
   return "";
