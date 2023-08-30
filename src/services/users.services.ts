@@ -19,7 +19,7 @@ export const createPessoa = async ({
   });
 
   if (userEmailAlreadyExists) {
-    throw new AppError("email or cpf already registered", 401);
+    throw new AppError("Email already registered", 401);
   }
 
   const newPessoa = userRespository.create({
