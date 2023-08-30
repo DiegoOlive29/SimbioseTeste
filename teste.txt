@@ -25,15 +25,15 @@ Backend
 Nós esperamos que você disponibilize uma aplicação REST com os seguintes endpoints:
 
 
-    [GET] /pessoa/{id} - retorna os dados de uma pessoa em específico
+    [GET] /pessoa/{id} - retorna os dados de uma pessoa em específico -
 
-    [GET] /pessoas - retorna uma lista de pessoas cadastradas
+    [GET] /pessoas - retorna uma lista de pessoas cadastradas -
 
-    [DELETE] /pessoa/{id} - deleta os dados de uma pessoa em específico
+    [DELETE] /pessoa/{id} - deleta os dados de uma pessoa em específico -
 
-    [PUT] /pessoa/{id} - altera os dados de uma pessoa em específico
+    [PUT] /pessoa/{id} - altera os dados de uma pessoa em específico -
 
-    [POST] /pessoa - cadastra uma nova pessoa
+    [POST] /pessoa - cadastra uma nova pessoa -
 
 
 Não é obrigatório, mas…
