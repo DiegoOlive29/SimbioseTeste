@@ -1,6 +1,6 @@
 ### Teste técnico solictado pela Simbiose:
 
-  Teste realizado para a Simbiose, onde foi solicitado a criação de CRUD para pessoas.
+Teste realizado para a Simbiose, onde foi solicitado a criação de CRUD para pessoas.
 
 ## Built With
 
@@ -13,14 +13,14 @@
 - [Reflect-metadata](https://www.npmjs.com/package/reflect-metadata)
 - [Typescript](https://www.typescriptlang.org/)
 - [Node.js](https://nodejs.org/en)
-  
+
 <br>
 
 ## Começando
 
 Estas instruções fornecerão uma cópia do projeto em execução em sua máquina local para fins de desenvolvimento e teste.
-### Pré-requisitos
 
+### Pré-requisitos
 
 - [Nodejs](https://nodejs.org/en/)
 - [Git](https://git-scm.com/downloads)
@@ -57,6 +57,7 @@ npm typeorm migration:generate src/migrations/createUser -d src/data-source
 ou
 yarn typeorm migration:generate src/migrations/createUser -d src/data-source
 ```
+
 ```
 npm run typeorm migration:run -d src/data-source.ts
 ou
@@ -79,17 +80,76 @@ npm run test
 yarn test
 ```
 
-## Porta: 
-    A api por padrão roda na http://localhost:3000/
+## Porta:
+
+    A api por padrão roda na http://localhost:3001/
+
+## Rotas:
+
+### Get /pessoa
+
+Rota responsável por retornar todas as pessoas.
+
+- ### Rota: http://localhost:3001/pessoa
+
+- ### Request: Não é necessário
+
+### Get /pessoa/:id
+
+Rota responsável por retornar o id especificado.
+
+- ### Rota: http://localhost:3001/pessoa/:id
+
+- ### Request: Não é necessário
+
+### Post /pessoa
+
+Rota responsável por cadastrar uma nova pessoa.
+
+- ### Rota: http://localhost:3001/pessoa
+
+- ### Request:
+
+```JSON
+  {
+    "nome":"Diego",
+    "email": "Diegda@gmail.com",
+    "data": "29082000"
+  }
+```
+
+### Patch /pessoa/:id
+
+Rota responsável por alterar dados de uma pessoa já existente.
+
+- ### Rota: http://localhost:3001/pessoa/:id
+
+- ### Request:
+
+```JSON
+  {
+    "nome":"Maria",
+
+  }
+```
+
+### Delete /pessoa/:id
+
+Rota responsável por deletar uma pessoa especificada pelo id.
+
+- ### Rota: http://localhost:3001/pessoa/:id
+
+- ### Request: Não é necessário
+
 
 ## Estrutura de pastas:
 
     Src - com todos os arquivos desenvolvidos.
-        
+
         controllers - Funções que tem responsabilidade de pegar as informações nececssarias na requisição e chamar os services.
-        
+
         services - Funções que de fato executam as atividade dentro da api, realizando post, get, update...
-        
+
         interfaces - Mascaras para uso do typescript, de forma a ajuda no desenvolvimento.
 
         erros - Um extenção da classe de erro que permite customizar o status e a mensagem do erro.
